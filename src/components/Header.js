@@ -50,21 +50,25 @@ const Header = ({
     </form>
     <div className={`Header__Filters ${!showFilters && 'hidden'}`}>
       <select
+        className='Header__Filters__Select'
         value={filterBy}
         onChange={handleFilter}
         title='Filter by'
         aria-label='Filter by'
       >
+        <option disabled>Filter by...</option>
         <option value={FILTER_NAME}>Name</option>
         <option value={FILTER_ADDRESS}>Address</option>
         <option value={FILTER_PHONE}>Phone number</option>
       </select>
       <select
+        className='Header__Filters__Select'
         value={orderBy}
         onChange={handleOrder}
         title='Order by'
         aria-label='Order'
       >
+        <option disabled>Order...</option>
         {/* Disable rule as it enforces emojis being wrapped in <span>,
             which is not valid as an <option> children */}
         {/* eslint-disable-next-line jsx-a11y/accessible-emoji */}

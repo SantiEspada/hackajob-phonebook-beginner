@@ -83,7 +83,7 @@
   opacity: 0;
 }
 
-.Header__Filters select {
+.Header__Filters__Select {
   background: transparent;
   border: none;
   outline: none !important;
@@ -91,8 +91,9 @@
   appearance: none;
   display: block;
   border-radius: 0;
+  cursor: pointer;
 }
 
-.Header__Filters select+select {
+.Header__Filters__Select+.Header__Filters__Select {
   border-left: 2px solid rgb(200, 200, 200);
 }
