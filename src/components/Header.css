@@ -1,0 +1,98 @@
+.Header {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+  background: white;
+  position: relative;
+  z-index: 2;
+}
+
+.Header__Wrapper {
+  position: relative;
+}
+
+.Header__Title {
+  margin: 0 auto 0 18px;
+  font-size: 24px;
+}
+
+.Header__Nav {
+  display: flex;
+}
+
+.Header__Nav__Item {
+  font-size: 24px;
+  cursor: pointer;
+  display: block;
+  outline: none !important;
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+.Header__Nav__Item+.Header__Nav__Item {
+  margin-left: 18px;
+}
+
+.Header__Search {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 12px;
+  margin-bottom: 18px;
+  transition: margin .4s, opacity 1.6s;
+}
+
+.Header__Search.hidden {
+  opacity: 0;
+  transition: margin .8s, opacity .4s;
+  margin-top: -82px;
+}
+
+.Header__Search__Input {
+  width: 100%;
+  border: 2px solid rgb(200, 200, 200);
+  padding: 8px 16px;
+  border-radius: 99px;
+  transition: .2s;
+  outline: none;
+}
+
+.Header__Search__Input:focus {
+  border-color: mediumvioletred;
+}
+
+.Header__Filters {
+  position: absolute;
+  z-index: 3;
+  border: 2px solid rgb(200, 200, 200);
+  border-radius: 30px;
+  border-top-right-radius: 0;
+  display: flex;
+  width: 200px;
+  right: 20px;
+  top: 60px;
+  transition: .3s;
+}
+
+.Header__Filters.hidden {
+  transform: translateY(-20%);
+  opacity: 0;
+}
+
+.Header__Filters select {
+  background: transparent;
+  border: none;
+  outline: none !important;
+  padding: 8px 16px;
+  appearance: none;
+  display: block;
+  border-radius: 0;
+}
+
+.Header__Filters select+select {
+  border-left: 2px solid rgb(200, 200, 200);
+}
