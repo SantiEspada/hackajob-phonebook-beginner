@@ -24,7 +24,7 @@ const Header = ({
   handleFilter,
   handleOrder
 }) => (
-  <div className='Header__Wrapper'>
+  <>
     <header className='Header'>
       <Logo color='darkgray' size={28} />
       <h1 className='Header__Title'>
@@ -77,7 +77,7 @@ const Header = ({
         <option value={ORDER_DESC} role='img' aria-label='Descending'>⬇️</option>
       </select>
     </div>
-  </div>
+  </>
 );
 
 export default Header;

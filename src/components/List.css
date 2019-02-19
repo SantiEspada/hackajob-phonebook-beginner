@@ -1,0 +1,115 @@
+.List {
+  border: 2px solid rgb(200, 200, 200);
+  margin: 0;
+  padding: 0;
+  border-radius: 22px;
+  overflow-x: hidden;
+  height: calc(100% - 82px);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.List__Message {
+  margin: auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.List__Message__Icon {
+  font-size: 128px;
+  font-style: normal;
+}
+
+.List__Message__Text {
+  font-size: 22px;
+  color: gray;
+}
+
+.List__Header {
+  background-color: rgb(200, 200, 200);
+  color: white;
+  padding-left: 12px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  position: sticky;
+  top: 0;
+}
+
+.List__Contact {
+  display: grid;
+  padding: 6px 12px;
+  grid-template-columns: 50px 1fr 40px;
+  grid-template-areas:
+    'avatar title action'
+    'avatar subtitle action'
+    'info info info';
+}
+
+.List__Contact__Avatar {
+  grid-area: avatar;
+  height: 40px;
+  width: 40px;
+  background-color: red;
+  border-radius: 99px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  text-transform: capitalize;
+  color: white;
+  font-style: normal;
+}
+
+.List__Contact__Title {
+  grid-area: title;
+  margin-top: auto;
+  font-size: 16px;
+  line-height: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.List__Contact__Subtitle {
+  grid-area: subtitle;
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.List__Contact__Action {
+  grid-area: action;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: normal;
+  font-weight: lighter;
+  cursor: pointer;
+}
+
+.List__Contact__Info {
+  margin-top: 6px;
+  grid-area: info;
+  border-top: 1px solid rgb(200, 200, 200);
+}
+
+.List__Contact__Info.hidden {
+  display: none;
+}
+
+.List__Contact__Info__Label {
+  font-size: 12px;
+}
+
+.List__Contact__Info__Address {
+  font-size: 14px;
+}

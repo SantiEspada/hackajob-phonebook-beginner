@@ -2,14 +2,9 @@
   height: 64px;
   display: flex;
   align-items: center;
-  padding: 0 18px;
   background-image: linear-gradient(to bottom, white, transparent);
   position: relative;
   z-index: 2;
-}
-
-.Header__Wrapper {
-  position: relative;
 }
 
 .Header__Title {
@@ -41,15 +36,14 @@
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 0 12px;
   margin-bottom: 18px;
-  transition: margin .4s, opacity .8s .2s;
+  transition: margin .2s, opacity .4s .1s;
 }
 
 .Header__Search.hidden {
   opacity: 0;
-  transition: margin .8s .2s, opacity .4s;
-  margin-top: -82px;
+  transition: margin .4s .1s, opacity .2s;
+  margin-top: -64px;
 }
 
 .Header__Search__Input {
@@ -75,7 +69,7 @@
   width: 200px;
   right: 20px;
   top: 64px;
-  transition: .6s;
+  transition: .3s;
 }
 
 .Header__Filters.hidden {

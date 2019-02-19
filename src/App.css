@@ -11,12 +11,3 @@ html, body, #root {
   max-width: 420px;
   margin: 0 auto;
 }
-
-@media(min-width: 420px) {
-  body {
-    background: lightgray;
-  }
-  .App {
-    box-shadow: 0 0 12px rgba(000, 000, 000, .2);
-  }
-}
