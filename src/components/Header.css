@@ -62,13 +62,14 @@
 .Header__Filters {
   position: absolute;
   z-index: 3;
+  background: white;
   border: 2px solid rgb(200, 200, 200);
   border-radius: 30px;
   border-top-right-radius: 0;
   display: flex;
   width: 200px;
-  right: 20px;
-  top: 64px;
+  right: 0;
+  top: 62px;
   transition: .3s;
 }
 
