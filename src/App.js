@@ -47,11 +47,31 @@ class App extends Component {
     }
   }
 
+  handleFilter = (e) => {
+    if(e.target && typeof e.target.value !== 'undefined') {
+      this.setState({
+        filterBy: e.target.value,
+        showFilters: false,
+      });
+    }
+  }
+
+  handleOrder= (e) => {
+    if(e.target && typeof e.target.value !== 'undefined') {
+      this.setState({
+        orderBy: e.target.value,
+        showFilters: false,
+      });
+    }
+  }
+
   render() {
     const {
       showSearch,
       searchText,
       showFilters,
+      filterBy,
+      orderBy,
     } = this.state;
 
     return (
@@ -60,9 +80,13 @@ class App extends Component {
           showSearch={showSearch}
           searchText={searchText}
           showFilters={showFilters}
-          handleSearch={this.handleSearch}
+          filterBy={filterBy}
+          orderBy={orderBy}
           toggleSearch={this.toggleSearch}
           toggleFilters={this.toggleFilters}
+          handleSearch={this.handleSearch}
+          handleFilter={this.handleFilter}
+          handleOrder={this.handleOrder}
         />
       </div>
     )

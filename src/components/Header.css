@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   padding: 0 18px;
-  background: white;
+  background-image: linear-gradient(to bottom, white, transparent);
   position: relative;
   z-index: 2;
 }
@@ -43,12 +43,12 @@
   width: 100%;
   padding: 0 12px;
   margin-bottom: 18px;
-  transition: margin .4s, opacity 1.6s;
+  transition: margin .4s, opacity .8s .2s;
 }
 
 .Header__Search.hidden {
   opacity: 0;
-  transition: margin .8s, opacity .4s;
+  transition: margin .8s .2s, opacity .4s;
   margin-top: -82px;
 }
 
@@ -74,13 +74,14 @@
   display: flex;
   width: 200px;
   right: 20px;
-  top: 60px;
-  transition: .3s;
+  top: 64px;
+  transition: .6s;
 }
 
 .Header__Filters.hidden {
   transform: translateY(-20%);
   opacity: 0;
+  pointer-events: none;
 }
 
 .Header__Filters__Select {
