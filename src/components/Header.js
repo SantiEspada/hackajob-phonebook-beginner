@@ -22,7 +22,7 @@ const Header = ({
   orderBy,
   handleSearch,
   handleFilter,
-  handleOrder
+  handleOrder,
 }) => (
   <>
     <header className='Header'>

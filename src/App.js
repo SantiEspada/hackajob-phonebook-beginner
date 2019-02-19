@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Header from 'components/Header';
 import List from 'components/List';
 
-import { FILTER_NAME, ORDER_ASC } from 'constants.js';
+import { API_ENDPOINT, FILTER_NAME, ORDER_ASC } from 'constants.js';
 
 import './App.css';
 
@@ -17,6 +17,22 @@ class App extends Component {
     contacts: [],
     expandedContacts: [],
     loading: true,
+  }
+
+  async componentDidMount() {
+    const response = await fetch(API_ENDPOINT);
+    const { contacts: rawContacts } = await response.json();
+
+    const contacts = rawContacts.map((contact, key) => ({
+      ...contact,
+      key,
+      toggleExpanded: () => this.toggleExpandedContact(key)
+    }));
+
+    this.setState({
+      contacts,
+      loading: false,
+    });
   }
 
   toggleSearch = () => {
@@ -71,24 +87,20 @@ class App extends Component {
 
   toggleExpandedContact = (key) => {
     const {
-      expandedContacts,
+      expandedContacts: oldExpandedContacts,
     } = this.state;
 
-    const findIndex = expandedContacts.findIndex(contact => contact === key);
+    const findIndex = oldExpandedContacts.findIndex(contact => contact === key);
+    const expandedContacts = [...oldExpandedContacts];
     if(findIndex === -1) {
-      this.setState({
-        expandedContacts: [
-          ...expandedContacts,
-          key,
-        ],
-      })
+      expandedContacts.push(key);
     } else {
-      this.setState({
-        expandedContacts: [
-          ...expandedContacts.splice(findIndex, 1),
-        ],
-      });
+      expandedContacts.splice(findIndex, 1);
     }
+
+    this.setState({
+      expandedContacts,
+    });
   }
 
   render() {

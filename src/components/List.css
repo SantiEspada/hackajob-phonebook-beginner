@@ -32,7 +32,7 @@
   background-color: rgb(200, 200, 200);
   color: white;
   padding-left: 12px;
-  height: 22px;
+  min-height: 22px;
   display: flex;
   align-items: center;
   font-size: 14px;

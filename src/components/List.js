@@ -1,32 +1,48 @@
 import React from 'react';
 
+import { stringToColour } from 'utils.js';
+
 import './List.css';
 
 const Header = ({letter}) => (
-  <li className='List__Header'>{letter}</li>
+  <li className='List__Header' key={letter}>{letter}</li>
 );
 
-const Contact = ({name, phone, address, expanded}) => (
-  <li className='List__Contact'>
-    <i className='List__Contact__Avatar'>{name.charAt(0)}</i>
-    <span className='List__Contact__Title'>{name}</span>
-    <span className='List__Contact__Subtitle'>{phone}</span>
-    <i className='List__Contact__Action'>›</i>
-    <div className={`List__Contact__Info ${!expanded && 'hidden'}`}>
-      <span className='List__Contact__Info__Label'>Address</span>
-      <p className='List__Contact__Info__Address'>
-        {address}
-      </p>
-    </div>
-  </li>
-);
+const Contact = ({name, phone_number, address, expanded, toggleExpanded}) => {
+  const initials = name.includes(' ')
+    ? name
+        .split(' ')
+        .slice(0, 2)
+        .map(word => word.charAt(0))
+        .join('')
+    : name
+        .charAt(0);
+  
+  const avatarStyle = {
+    backgroundColor: stringToColour(initials)
+  };
+
+  return (
+    <li className='List__Contact'>
+      <i className='List__Contact__Avatar' style={avatarStyle}>{initials}</i>
+      <span className='List__Contact__Title'>{name}</span>
+      <span className='List__Contact__Subtitle'>{phone_number}</span>
+      <i className='List__Contact__Action' onClick={toggleExpanded}>›</i>
+      <div className={`List__Contact__Info ${!expanded && 'hidden'}`}>
+        <span className='List__Contact__Info__Label'>Address</span>
+        <p className='List__Contact__Info__Address'>
+          {address}
+        </p>
+      </div>
+    </li>
+  )
+};
 
 const List = ({
   loading,
   contacts,
   mustGroup,
   expanded,
-  toggleExpanded,
 }) => {
   const renderContacts = () => {
     if(mustGroup) {
@@ -34,6 +50,7 @@ const List = ({
       contacts.forEach(({name, key, ...contact}) => {
         const props = {
           name,
+          key,
           ...contact,
           expanded: expanded.includes(key),
         };
@@ -48,7 +65,7 @@ const List = ({
       });
 
       return Object.keys(groups).map(key => {
-        const headerEl = <Header letter={key} />;
+        const headerEl = <Header key={key} letter={key} />;
         const items = [
           headerEl,
           ...groups[key],
@@ -60,6 +77,7 @@ const List = ({
       return contacts.map(({key, ...contact}) => {
         const props = {
           ...contact,
+          key,
           expanded: expanded.includes(key),
         };
 
