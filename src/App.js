@@ -3,7 +3,11 @@ import React, { Component } from 'react';
 import Header from 'components/Header';
 import List from 'components/List';
 
-import { API_ENDPOINT, FILTER_NAME, ORDER_ASC } from 'constants.js';
+import {
+  API_ENDPOINT,
+  FILTER_NAME,
+  ORDER_ASC,
+} from 'constants.js';
 
 import './App.css';
 
@@ -103,6 +107,37 @@ class App extends Component {
     });
   }
 
+  filterContacts = () => {
+    const {
+      filterBy,
+      orderBy,
+      searchText,
+      contacts,
+    } = this.state;
+
+    let filteredContacts = [...contacts];
+
+    filteredContacts = filteredContacts.sort((contactA, contactB) => {
+      const compareA = contactA[filterBy];
+      const compareB = contactB[filterBy];
+
+      if(orderBy === ORDER_ASC) {
+        return compareA < compareB ? -1 : 1;
+      } else {
+        return compareA > compareB ? -1 : 1;
+      }
+    });
+
+    if(searchText !== '') {
+      const matches = (haystack) => haystack.toLowerCase().includes(searchText.toLowerCase());
+      filteredContacts = filteredContacts.filter(({ name, address, phone_number }) => (
+        matches(name) || matches(address) || matches(phone_number)
+      ));
+    }
+
+    return filteredContacts;
+  }
+
   render() {
     const {
       showSearch,
@@ -110,12 +145,11 @@ class App extends Component {
       showFilters,
       filterBy,
       orderBy,
-      contacts,
       expandedContacts,
       loading,
     } = this.state;
 
-    const filteredContacts = contacts; // TODO: filter
+    const filteredContacts = this.filterContacts();
     const mustGroup = filterBy === FILTER_NAME;
 
     return (
